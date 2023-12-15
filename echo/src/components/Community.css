@@ -117,7 +117,48 @@ label {
 .btn-success:hover {
   background-color: #0056b3;
 }
+.post {
+  /* Your existing styles for .post */
+}
 
+.post-header {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  
+}
+
+.post-content {
+  /* Optional: Add styles for post content */
+}
+
+.post-actions {
+  /* Your existing styles for .post-actions */
+}
+
+.heart-box {
+  display: inline-block;
+  border: 1px solid #6c6c6c; /* Add a border */
+  padding: 5px; /* Adjust padding as needed */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+  margin-right: 2px;
+  background-color: #ffaed0;
+}
+.thumb-box {
+  display: inline-block;
+  border: 1px solid #6c6c6c; /* Add a border */
+  padding: 5px; /* Adjust padding as needed */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+  margin-right: 2px;
+  background-color: #faffb5;
+}
+.laugh-box {
+  display: inline-block;
+  border: 1px solid #6c6c6c; /* Add a border */
+  padding: 5px; /* Adjust padding as needed */
+  border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+  margin-right: 2px;
+  background-color: #aef1ff;
+}
 #username {
   width: 100%;
   padding: 8px;
@@ -153,12 +194,13 @@ label {
   line-height: 3; 
   height: 60px;
   padding: 20px; 
-  padding-left: 5px;
+  padding-left: 2px;
   box-sizing: border-box;
 }
 
 #search-bar {
-  margin: 20px;
+  margin: 18px;
+  margin-left: 13px;
 }
 
 .search-container {
@@ -224,3 +266,31 @@ label {
   margin-bottom: 10px;
 }
 
+.community-container {
+  display: flex;
+}
+
+.left-content {
+  flex: 6.5; /* Takes up 70% of the width */
+}
+
+.right-content {
+  flex: 3.5; /* Takes up 30% of the width */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.content-box {
+  margin-top: 30px;
+  margin-right: 20px;
+  margin-bottom: 0px; /* Adjust as needed */
+  padding: 0px;
+  background-color: #fff9f9; /* Example background color */
+  border: 1px solid #ced4da;
+  border-radius: 20px;
+  box-shadow: 0 2px 4px rgba(98, 0, 0, 0.1);
+}
+
+.blank-box {
+  flex: 1; /* Takes up remaining space vertically */
+}

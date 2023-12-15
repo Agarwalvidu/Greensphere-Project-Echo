@@ -4,30 +4,57 @@ import { FaImages, FaTags, FaUpload , FaComment} from 'react-icons/fa';
  
 function Community() { 
   const [postsData, setPostsData] = useState([
-    { username: 'user1', content: 'This is the first post!', liked: false, likes: 0 },
-    { username: 'user2', content: 'Another post here.', liked: false, likes: 0 },
+    { username: 'Trishita', content: 'I alwaya love to explore the eenvironment and capture it in my device to remain it in my memories always.', liked: false, likes: 0 },
+    { username: 'Anandita', content: 'Another post here.', liked: false, likes: 0 },
   ]);  
-  const [searchTerm, setSearchTerm] = useState(''); 
-  const [newPostContent, setNewPostContent] = useState(''); 
-  const [topContributors, setTopContributors] = useState([]);
+
+  // const [searchTerm, setSearchTerm] = useState(''); 
+  // const [newPostContent, setNewPostContent] = useState(''); 
+  // const [username, setUsername] = useState(''); // Added username state
 
   useEffect(() => { 
     // Display existing posts 
     displayPosts(); 
-  }, [searchTerm, postsData]); // Run only once on component mount 
-
+  }, []); // Run only once on component mount 
+  // useEffect(() => {
+  //   console.log('Updated Posts Data:', postsData);
+  // }, [postsData]);
   // Display existing posts or filtered posts based on search term 
   function displayPosts() {
     return postsData.map((post, index) => (
       <div key={index} className="post">
-        <strong>{post.username}:</strong> {post.content}
+        <strong>{post.username}</strong> <br></br><br></br>
+        {post.content}<br></br><br></br>
+        <hr style={{ border: '0', height: '1px', background: '#444' }} />
+
         <div className="post-actions">
           <button
             onClick={() => handleLike(index)}
             className={post.liked ? 'liked' : ''}
           >
-            ❤️ {post.likes}
+            <span className="heart-box">
+            <span role="img" aria-label="heart">❤️</span>
+          </span>
+          {post.likes}
           </button>
+          <button
+          onClick={() => handleLike(index)}
+          className={post.liked ? 'liked' : ''}
+        >
+          <span className="thumb-box">
+            <span role="img" aria-label="thumbs-up">👍</span>
+          </span>
+          {post.likes}
+        </button>
+        <button
+          onClick={() => handleLike(index)}
+          className={post.liked ? 'liked' : ''}
+        >
+          <span className="laugh-box">
+            <span role="img" aria-label="laugh">😂</span>
+          </span>
+          {post.likes}
+        </button>
         </div>
       </div>
     ));
@@ -45,28 +72,30 @@ function Community() {
   };
 
   // Handle new post submission 
-  const handlePostSubmit = (event) => { 
-    event.preventDefault(); 
-    setPostsData([...postsData, { username: 'user', content: newPostContent }]); 
-    setNewPostContent(''); 
-  }; 
+  const handlePostSubmit = (event) => {
+    event.preventDefault();
+    const username = event.target.username.value;
+    const content = event.target.content.value;
+    setPostsData([...postsData, { username, content, liked: false, likes: 0 }]);
+    event.target.reset();
+  };
 
-  // Handle search term change 
-  const handleSearchChange = (event) => { 
-    setSearchTerm(event.target.value); 
-  }; 
+  // // Handle search term change 
+  // const handleSearchChange = (event) => { 
+  //   setSearchTerm(event.target.value); 
+  // }; 
 
-  // Handle new post content change 
-  const handleNewPostContentChange = (event) => { 
-    setNewPostContent(event.target.value); 
-  }; 
+  // // Handle new post content change 
+  // const handleNewPostContentChange = (event) => { 
+  //   setNewPostContent(event.target.value); 
+  // }; 
 
   return ( 
     <div className="community-container"> 
       <div className="left-content"> 
-        <header> 
+        {/* <header> 
           <h1>Your Community</h1> 
-        </header> 
+        </header>  */}
         <section id="search-bar"> 
           <div className="search-container"> 
             <span role="img" aria-label="search-icon"> 
@@ -75,8 +104,8 @@ function Community() {
             <input 
               type="text" 
               placeholder="Type to search..." 
-              value={searchTerm} 
-              onChange={handleSearchChange} 
+              // value={searchTerm} 
+              // onChange={handleSearchChange} 
             /> 
           </div> 
         </section> 
@@ -84,11 +113,13 @@ function Community() {
           <h2>Create Post</h2> 
           <form onSubmit={handlePostSubmit}> 
             <div className="form-group"> 
-              <input type="text" id="username" className="form-control" placeholder="Enter your name..." required /> 
+            <div className="textarea-container">
+              <input type="text" id="username" className="form-control" placeholder="     Enter your name..." required /> 
             </div> 
+            </div>
             <div className="form-group"> 
               <div className="textarea-container"> 
-                <FaComment className="icon" /> 
+                {/* <FaComment className="icon" />  */}
                 <textarea id="content" rows="4" placeholder="  What biotic change have you made for our environment today?" className="form-control-content" required></textarea> 
               </div> 
             </div> 
@@ -110,22 +141,13 @@ function Community() {
 
       {/* Right side content - Top Contributors */}
       <div className="right-content"> 
-        <section id="top-contributors" className="top-contributors-container"> 
-          <input 
-            type="text" 
-            placeholder="Top Contributors" 
-            value={topContributors} 
-            readOnly 
-          /> 
-        </section> 
+      <div className="content-box">
         <section className="top-contributors-section"> 
           <h2>Top Contributors</h2> 
-          <ul className="top-contributors-list"> 
-            {topContributors.map((contributor, index) => ( 
-              <li key={index}>{contributor}</li> 
-            ))} 
-          </ul> 
-        </section> 
+          </section>
+          </div>
+          <div className="content-box blank-box"></div>
+    
       </div> 
     </div> 
   ); 
