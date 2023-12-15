@@ -1,4 +1,4 @@
-
+import Community from './components/Community';
 import './App.css';
 
 function App() {
@@ -8,5 +8,5 @@ function App() {
     </div>
   );
 }
+export default Community;
 
-export default App;
